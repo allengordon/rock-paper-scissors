@@ -32,18 +32,25 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    const playerSelection = "rock";
-    const computerSelection = getComputerChoice();
+    let playerSelection;
+    let computerSelection = getComputerChoice();
 
-    for (let i = 0; i <= 5; i++) {
-        if (playerScore < 6 || computerScore < 6)
-            playRound(playerSelection, computerSelection);
+    for (let i = 0; i < 5; i++) {
+        if (playerScore < 5 || computerScore < 5) {
+            playerSelection = prompt("Choose your weapon")
+            computerSelection = getComputerChoice()
+            console.log(playRound(playerSelection, computerSelection));
+        }
     }
 
     if (playerScore > computerScore) {
-        return "Congrats! You won!";
+        console.log(playerScore);
+        return `Player Score: ${playerScore} Computer Score: ${computerScore} Congrats! You won!`;
     } else if (computerScore > playerScore) {
-        return "Sorry! you lost!";
+        console.log(computerScore);
+        return `Player Score: ${playerScore} Computer Score: ${computerScore} Sorry! you lost!`;
+    } else if (computerScore === playerScore) {
+        return `Player Score: ${playerScore} Computer Score: ${computerScore} It's a tie`;
     }
 }
 
